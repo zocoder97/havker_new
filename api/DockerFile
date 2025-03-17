@@ -1,0 +1,20 @@
+# Utilisation de l'image Node.js
+FROM node:20
+
+# Définition du répertoire de travail
+WORKDIR /app
+
+# Copie des fichiers package.json et package-lock.json
+COPY package*.json ./
+
+# Installation des dépendances
+RUN npm install
+
+# Copie du code source
+COPY . .
+
+# Exposition du port défini dans .env
+EXPOSE 8080
+
+# Commande de démarrage
+CMD ["npm", "start"]
