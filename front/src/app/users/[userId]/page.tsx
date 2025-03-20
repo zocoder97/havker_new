@@ -56,16 +56,22 @@ export default function UserProfile() {
                 </div>
             </div>
 
-            <div className="mb-6" style={{marginTop:"1rem"}}>
+            <div className="mb-6" style={{ marginTop: "1rem" }}>
                 <h3 className="text-xl font-semibold mb-2">Favoris de {user.username}</h3>
                 {favorites.length > 0 ? (
-                    <ul className="list-disc list-inside space-y-2">
-                        {favorites.map((fav) => (
-                            <li key={fav.id} className="text-gray-700">
-                                {fav.title}
-                            </li>
+                    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {favorites.map((story) => (
+                            <div key={story.id} className="bg-white p-4 rounded-lg shadow-md relative">
+                                <h2 className="text-lg font-semibold text-gray-800">
+                                    <a href={story.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                                        {story.title}
+                                    </a>
+                                </h2>
+                                <p className="text-sm text-gray-600">By {story.by}</p>
+                                <p className="text-xs text-gray-500">{story.score} points | {story.descendants} comments</p>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 ) : (
                     <p className="text-gray-500">Aucun favori pour cet utilisateur.</p>
                 )}

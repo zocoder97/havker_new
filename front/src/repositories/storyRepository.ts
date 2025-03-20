@@ -28,7 +28,7 @@ export const getFavoritesIUser = async (user:number) => {
   const response = await fetch(`${API_URL_STORY}/favorites/${user}`);
   if (!response.ok) throw new Error("Erreur récupération des favoris");
   const data = await response.json();
-  return data.stories ? data.stories.map((story: Story) => story.id) : [];
+  return data.stories ? data.stories.map((story: Story) => story) : [];
 };
 
 export const addFavorite = async (storyId: number) => {
